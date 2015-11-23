@@ -1,9 +1,11 @@
-function [ x ] = Doolittle( a,b )
+function [ x,y ] = Doolittle( a,b )
 %Doolittle
 %  author:v1ns0n
 n=length(b);
 u=zeros(n,n);
 l=zeros(n,n);
+x=zeros(n,1);
+y=zeros(n,1);
 u(1,1)=a(1,1);
 for i=2:n
     u(1,i)=a(1,i);
@@ -24,6 +26,13 @@ for r=2:n
 end
 disp(u);
 disp(l);
-x=0;
+y(1)=b(1);
+for i=2:n
+    y(i)=b(i)-sum(l(i,1:i-1)'.*y(1:i-1));
+end
+x(n)=y(n)/u(n,n);
+for i=n-1:-1:1
+    x(i)=(y(i)-sum(u(i,i+1:n)'.*x(i+1:n)))/u(i,i);
+end
 end
 
