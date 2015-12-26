@@ -1,0 +1,9 @@
+la=1;
+lb=1;
+r=10;
+theta0=[0,0,0,0];
+x_initial=zeros(7,1);
+dperiod=0.001;
+p_car=[15;12;2.5];
+Ja=1/r*[-1,1,la+lb;1,1,-(la+lb);-1,1,-(la+lb);1,1,la+lb];
+Jb=r/(4*(la+lb))*[-(la+lb),la+lb,-(la+lb),la+lb;la+lb,la+lb,la+lb,la+lb;1,-1,-1,1];
